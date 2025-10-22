@@ -1,0 +1,189 @@
+/* 🎨 Fondo y fuente */
+body {
+    background: #f3f5f9;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+/* 🌈 Header superior */
+.header-bar {
+    background: linear-gradient(90deg, #007bff 0%, #00b4d8 100%);
+    color: white;
+    border-radius: 12px;
+    padding: 18px 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.header-bar h2 {
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* 🧭 Header fragment */
+header.navbar {
+    background: linear-gradient(90deg, #007bff 0%, #00b4d8 100%);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+header .navbar-brand {
+    font-weight: 700;
+    color: #fff !important;
+    letter-spacing: 0.6px;
+}
+
+header .nav-link {
+    color: #f1f1f1 !important;
+    transition: color 0.2s ease-in-out;
+    font-weight: 500;
+}
+
+header .nav-link:hover {
+    color: #ffdd57 !important;
+}
+
+/* 📋 Contenedor tabla */
+.table-container, .modern-table {
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+    padding: 25px;
+    transition: all 0.3s ease;
+}
+
+.table-container:hover, .modern-table:hover {
+    transform: translateY(-3px);
+}
+
+/* Encabezado tabla */
+.table thead {
+    background: linear-gradient(90deg, #007bff 0%, #00b4d8 100%);
+    color: #fff;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* Hover filas */
+.table-hover tbody tr:hover {
+    background-color: #eaf6ff;
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* 🟢 Badges de estado */
+.badge {
+    font-size: 0.85rem;
+    border-radius: 1rem;
+    padding: 0.45em 0.9em;
+    font-weight: 600;
+}
+
+.bg-success-soft {
+    background-color: rgba(25, 135, 84, 0.12);
+    color: #198754;
+}
+
+.bg-secondary-soft {
+    background-color: rgba(108, 117, 125, 0.12);
+    color: #6c757d;
+}
+
+/* 💬 Alertas */
+.alert {
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.alert-success {
+    background-color: #e8f9f0;
+    border: 1px solid #b1e8c0;
+    color: #198754;
+}
+
+.alert-danger {
+    background-color: #fdeaea;
+    border: 1px solid #f5b5b1;
+    color: #b02a37;
+}
+
+/* 🧩 Formularios */
+.form-label {
+    font-weight: 600;
+    color: #007bff;
+}
+
+.form-control, .form-select {
+    border-radius: 12px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #00b4d8;
+    box-shadow: 0 0 0 0.2rem rgba(0,180,216,0.25);
+}
+
+/* Botones */
+.btn {
+    border-radius: 25px;
+    transition: all 0.2s ease-in-out;
+    font-weight: 500;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Colores personalizados */
+.btn-success {
+    background: linear-gradient(90deg, #198754 0%, #28a745 100%);
+    border: none;
+}
+
+.btn-success:hover {
+    background: linear-gradient(90deg, #157347 0%, #218838 100%);
+}
+
+.btn-outline-primary {
+    color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-outline-primary:hover {
+    background: #007bff;
+    color: #fff;
+}
+
+.btn-outline-danger {
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* 🧠 Tooltips */
+[data-bs-toggle="tooltip"] {
+    cursor: pointer;
+}
+
+/* 📌 Títulos principales */
+.title-page {
+    color: #007bff;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* 🧊 Transiciones suaves */
+a, button, .table, .alert, .badge {
+    transition: all 0.3s ease-in-out;
+}

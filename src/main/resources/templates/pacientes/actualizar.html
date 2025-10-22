@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Actualizar Paciente - Hospital System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet"> <!-- ✅ CSS moderno general -->
+</head>
+<body>
+
+<!-- Header -->
+<div th:replace="fragments/header :: header"></div>
+
+<div class="container-fluid py-5 px-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold title-page">Actualizar Datos del Paciente</h2>
+        <a class="btn btn-secondary rounded-pill shadow-sm" th:href="@{/pacientes/listar}">
+            <i class="bi bi-arrow-left-circle me-1"></i>Volver al Listado
+        </a>
+    </div>
+
+    <!-- Alertas -->
+    <div th:if="${exito}" class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
+        <i class="bi bi-check-circle me-2"></i><span th:text="${exito}"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    <div th:if="${error}" class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+        <i class="bi bi-exclamation-triangle me-2"></i><span th:text="${error}"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+
+    <!-- Formulario -->
+    <div class="card shadow-sm border-0 rounded-4 p-4 modern-card">
+        <form th:action="@{/pacientes/actualizar/{id}(id=${paciente.idPaciente})}"
+              th:object="${paciente}" method="post" class="needs-validation" novalidate>
+
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <label class="form-label fw-semibold">DNI</label>
+                    <input type="text" th:field="*{dni}" class="form-control" maxlength="8" required>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label fw-semibold">Nombres</label>
+                    <input type="text" th:field="*{nombres}" class="form-control" required>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label fw-semibold">Apellidos</label>
+                    <input type="text" th:field="*{apellidos}" class="form-control" required>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label fw-semibold">Fecha de Nacimiento</label>
+                    <input type="date" th:field="*{fechaNacimiento}" class="form-control">
+                </div>
+
+                <div class="col-md-2">
+                    <label class="form-label fw-semibold">Sexo</label>
+                    <select th:field="*{sexo}" class="form-select">
+                        <option value="" disabled>Seleccionar</option>
+                        <option value="Masculino" th:selected="${paciente.sexo == 'Masculino'}">Masculino</option>
+                        <option value="Femenino" th:selected="${paciente.sexo == 'Femenino'}">Femenino</option>
+                        <option value="Otro" th:selected="${paciente.sexo == 'Otro'}">Otro</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Dirección</label>
+                    <input type="text" th:field="*{direccion}" class="form-control">
+                </div>
+
+                <div class="col-md-3">
+                    <label class="form-label fw-semibold">Teléfono</label>
+                    <input type="text" th:field="*{telefono}" class="form-control">
+                </div>
+
+                <div class="col-md-5">
+                    <label class="form-label fw-semibold">Correo</label>
+                    <input type="email" th:field="*{correo}" class="form-control">
+                </div>
+
+                <div class="col-md-3">
+                    <label class="form-label fw-semibold">Estado</label>
+                    <input type="text" th:field="*{estado}"
+                           class="form-control fw-semibold text-center"
+                           th:classappend="${paciente.estado == 'activo'} ? 'text-success' : 'text-danger'"
+                           readonly>
+                </div>
+            </div>
+
+            <div class="mt-4 d-flex justify-content-end gap-2">
+                <button type="submit" class="btn btn-primary rounded-pill shadow-sm">
+                    <i class="bi bi-check-circle me-1"></i> Guardar Cambios
+                </button>
+                <a th:href="@{/pacientes/listar}" class="btn btn-outline-secondary rounded-pill shadow-sm">
+                    <i class="bi bi-x-circle me-1"></i> Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

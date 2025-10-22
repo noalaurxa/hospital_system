@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Antecedentes Médicos - Hospital System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<!-- Header -->
+<div th:replace="fragments/header :: header"></div>
+
+<!-- Contenido principal -->
+<div class="container my-5">
+    <div class="header-bar d-flex justify-content-between align-items-center mb-4">
+        <h2><i class="bi bi-clipboard-heart me-2"></i>Listado de Antecedentes Médicos</h2>
+        <a class="btn btn-light text-primary fw-semibold rounded-pill shadow-sm"
+           th:href="@{/antecedentes/registrar}">
+            <i class="bi bi-plus-circle me-1"></i> Registrar Nuevo
+        </a>
+    </div>
+
+    <!-- Alertas -->
+    <div th:if="${exito}" class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
+        <i class="bi bi-check-circle me-2"></i><span th:text="${exito}"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+
+    <div th:if="${error}" class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+        <i class="bi bi-exclamation-triangle me-2"></i><span th:text="${error}"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+
+    <!-- Tabla -->
+    <div class="table-container">
+        <table class="table table-hover align-middle text-center">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Paciente</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="ant, iterStat : ${antecedentes}">
+                <td th:text="${iterStat.count}"></td>
+                <td th:text="${ant.historiaClinica.paciente.nombres + ' ' + ant.historiaClinica.paciente.apellidos}"></td>
+                <td>
+                    <span class="badge bg-info text-dark px-3 py-2" th:text="${ant.tipo}"></span>
+                </td>
+                <td th:text="${ant.descripcion}"></td>
+                <td>
+                    <div class="d-flex justify-content-center gap-2">
+                        <a th:href="@{/antecedentes/actualizar/{id}(id=${ant.idAntecedente})}"
+                           class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                            <i class="bi bi-pencil-square me-1"></i>Editar
+                        </a>
+                        <a th:href="@{/antecedentes/eliminar/{id}(id=${ant.idAntecedente})}"
+                           class="btn btn-outline-danger btn-sm rounded-pill px-3"
+                           onclick="return confirm('¿Está seguro de eliminar este antecedente?');">
+                            <i class="bi bi-trash3 me-1"></i>Eliminar
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(antecedentes)}">
+                <td colspan="5" class="text-muted py-4">
+                    <i class="bi bi-emoji-frown fs-5 me-2"></i>No hay antecedentes médicos registrados
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
